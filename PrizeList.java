@@ -17,9 +17,22 @@ public class PrizeList {
         }
     }
 
+    public boolean checkPrizeList() {
+        if (prizeList.size() != 0 ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     public String givePrize() {
-        String prizeToGive = prizeList.get(0);
-        prizeList.remove(0);
-        return prizeToGive;
+        String prizeToGive = new String();
+        if (prizeList.size() != 0 ) {
+            prizeToGive = prizeList.get(0);
+            prizeList.remove(0);
+            
+        }
+        return prizeToGive;        
     }
 }

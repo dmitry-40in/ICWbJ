@@ -37,7 +37,7 @@ public abstract class AbstractToy {
     }
 
     public String printInfoForPrize() {
-        String prize = "игрушка - " + name + ", ID: " + String.format("%d", id);
+        String prize = "игрушка - " + name + ", ID: " + String.format("%d", id) + "\n";
         return prize;
     }
 

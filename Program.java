@@ -84,10 +84,15 @@ public class Program {
                     break;
 
                 case 4:
-                    System.out.println("Разыгрываем игршку...");
-                    prize = shop.playAToy();
-                    prizeList.addPrize(prize);
-                    System.out.printf("Приз: %s\n", prize);
+                    if (shop.checkList()) {
+                        System.out.println("Разыгрываем игрушку...");
+                        prize = shop.playAToy();
+                        prizeList.addPrize(prize);
+                        System.out.printf("Приз: %s\n", prize);
+                    }
+                    else {
+                        System.out.println("Магазин пуст.");
+                    }
                     break;
 
                 case 5:
@@ -96,10 +101,15 @@ public class Program {
                     break;
 
                 case 6:
-                    BufferedWriter writer = new BufferedWriter(new FileWriter("prizes_awarded.txt"));
-                    writer.write(prizeList.givePrize());
-                    writer.close();
-                    System.out.println("Призовая игрушка выдана.");
+                    if (prizeList.checkPrizeList()) {
+                        BufferedWriter writer = new BufferedWriter(new FileWriter("prizes_awarded.txt", true));
+                        writer.write(prizeList.givePrize());
+                        writer.close();
+                        System.out.println("Призовая игрушка выдана.");
+                    }
+                    else {
+                        System.out.println("Список призов пуст.");
+                    } 
                     break;
 
                 case 7:

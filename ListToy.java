@@ -36,6 +36,15 @@ public class ListToy {
         return false;
     }
 
+    public boolean checkList() {
+        if (toyList.size() != 0 ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     public String playAToy() {
         Random random = new Random();
 
