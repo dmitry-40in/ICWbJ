@@ -17,8 +17,8 @@ public class Program {
 
         System.out.println("Магазин детских товар. Кое-что уже есть, проверь...");
         ListToy shop = new ListToy();
-        Toy Cat = new Toy(1, "CAT", 2, 100);
-        Toy Dog = new Toy(2, "DOG", 4, 50);
+        Toy Cat = new Toy(1, "CAT", 2, 10);
+        Toy Dog = new Toy(2, "DOG", 4, 20);
         shop.addToy(Cat);
         shop.addToy(Dog);
 
@@ -30,9 +30,9 @@ public class Program {
             System.out.println("2 -> Посмотреть, что есть в наличии.");
             System.out.println("3 -> Изменить частоту выпадания игрушки.");
             System.out.println("4 -> Разыграть игрушку.");
-
-            // System.out.println("3 -> текст.");
-            System.out.println("6 -> Выход.");
+            System.out.println("5 -> Посмотреть список призов.");
+            System.out.println("6 -> Выдать призовую игрушку.");
+            System.out.println("7 -> Выход.");
 
             System.out.println();
             System.out.printf("Твой выбор: ");
@@ -45,6 +45,10 @@ public class Program {
 
                     System.out.printf("Введите id игрушки: ");
                     id = console.nextInt();
+                    while (shop.checkId(id)) {
+                        System.out.printf("Игрушка с таким id уже существует, введите новый: ");
+                        id = console.nextInt();
+                    }
                     System.out.printf("Введите название игрушки: ");
                     name = console.next();
                     System.out.printf("Введите количество игрушек: ");
@@ -85,8 +89,18 @@ public class Program {
                     prizeList.addPrize(prize);
                     System.out.printf("Приз: %s\n", prize);
                     break;
+                
+                case 5:
+                    System.out.println("Список призов:");
+                    prizeList.showAllPrizes();
+                    break;
 
                 case 6:
+                    
+                    // System.out.printf("Призовая игрушка: \"%s:%s\"выдана.", prizeList[0]);
+                    break;
+                    
+                case 7:
                     inShop = false;
                     break;
             

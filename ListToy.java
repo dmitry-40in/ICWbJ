@@ -27,6 +27,15 @@ public class ListToy {
         }
     }
 
+    public boolean checkId(int id) {
+        for (Toy toy : toyList) {
+            if (toy.getId() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public String playAToy() {
         Random random = new Random();
 
@@ -49,6 +58,12 @@ public class ListToy {
             }
         }
         return null;
+    }
+
+    public void writePrizeToyToFile(Toy toy, String filename) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true));
+        writer.write(toy.getId() + "," + toy.getName() + "\n");
+        writer.close();
     }
 
     
