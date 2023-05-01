@@ -11,6 +11,11 @@ public abstract class AbstractToy {
         this.frequency = frequency;
     }
 
+
+    public int getId() {
+        return id;
+    }
+
     public int getQuantity() {
         return quantity;
     }
@@ -30,4 +35,11 @@ public abstract class AbstractToy {
     public void printInfo() {
         System.out.printf("Игрушка \"%s\": ID %d, кол-во %d шт., частота выпадения %d%%\n", name, id, quantity, frequency);
     }
+
+    public String printInfoForPrize() {
+        String prize = "игрушка - " + name + ", ID: " + String.format("%d", id);
+        return prize;
+    }
+
+    
 }

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class ListToy {
     private ArrayList<Toy> toyList;
@@ -11,17 +12,45 @@ public class ListToy {
         this.toyList.add(toyInShop);
     }
 
-    // public void remove Toy - может и не нуден, удалять автоматически как колв-во =0
-    
     public void showAllToys() {
         for (Toy toy : toyList) {
             toy.printInfo();
         }
     }
 
-    // public void show() {
-    //     for (int i = 0; i < toyShop.size(); i++) {
-    //         System.out.println(i);
-    //     }
-    // }
+    public void changeFrequency(int id, int frequency) {
+        for (Toy toy : toyList) {
+            if (toy.getId() == id) {
+                toy.setFrequency(frequency);
+                break;
+            }
+        }
+    }
+
+    public String playAToy() {
+        Random random = new Random();
+
+        int totalFrequency = 0;
+        for (Toy toy : toyList) {
+            totalFrequency += toy.getFrequency();
+        }
+
+        int selectedFrequency = random.nextInt(totalFrequency);
+        int currentFrequency = 0;
+
+        for (Toy toy : toyList) {
+            currentFrequency += toy.getFrequency();
+            if (selectedFrequency < currentFrequency) {
+                toy.setQuantity(toy.getQuantity() - 1);
+                if (toy.getQuantity() <= 0) {
+                    toyList.remove(toy);
+                }
+                return toy.printInfoForPrize();
+            }
+        }
+        return null;
+    }
+
+    
+
 }

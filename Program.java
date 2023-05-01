@@ -8,6 +8,12 @@ public class Program {
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
         boolean inShop = true;
+        int id;
+        String name;
+        int quantity;
+        int frequency;
+        String prize;
+        int choice;
 
         System.out.println("Магазин детских товар. Кое-что уже есть, проверь...");
         ListToy shop = new ListToy();
@@ -16,17 +22,21 @@ public class Program {
         shop.addToy(Cat);
         shop.addToy(Dog);
 
+        PrizeList prizeList = new PrizeList();
+
         while (inShop) {
             System.out.println();
             System.out.println("1 -> Добавить новые игрушки.");
-            System.out.println("2 -> Посмотреть что есть в наличии.");
+            System.out.println("2 -> Посмотреть, что есть в наличии.");
+            System.out.println("3 -> Изменить частоту выпадания игрушки.");
+            System.out.println("4 -> Разыграть игрушку.");
 
             // System.out.println("3 -> текст.");
             System.out.println("6 -> Выход.");
 
             System.out.println();
             System.out.printf("Твой выбор: ");
-            int choice = console.nextInt();
+            choice = console.nextInt();
             System.out.println();
 
             switch (choice) {
@@ -34,11 +44,11 @@ public class Program {
                     System.out.println("Добавляем новые игрушки:");
 
                     System.out.printf("Введите id игрушки: ");
-                    int id = console.nextInt();
+                    id = console.nextInt();
                     System.out.printf("Введите название игрушки: ");
-                    String name = console.next();
+                    name = console.next();
                     System.out.printf("Введите количество игрушек: ");
-                    int quantity = console.nextInt();
+                    quantity = console.nextInt();
                     while (quantity <= 0) {
                         System.out.println("Количество должно быть больше 0.");
                         System.out.printf("Введите количество игрушек: ");
@@ -46,7 +56,7 @@ public class Program {
                     }
 
                     System.out.printf("Введите частоту выпадения игрушки: ");
-                    int frequency = console.nextInt();
+                    frequency = console.nextInt();
                     while (frequency < 0 || frequency > 100) {
                         System.out.println("Частота должна быть больше или равана 0 и меньше или равна 100.");
                         System.out.printf("Введите частоту выпадения игрушки: ");
@@ -58,6 +68,22 @@ public class Program {
 
                 case 2:
                     shop.showAllToys();
+                    break;
+
+                case 3:
+                    System.out.printf("Введите id игрушки: ");
+                    id = console.nextInt();
+                    System.out.printf("Новая частота равна: ");
+                    frequency = console.nextInt();
+                    shop.changeFrequency(id, frequency);
+                    System.out.println("Частота выпадания игрушки изменена");
+                    break;
+                
+                case 4:
+                    System.out.println("Разыгрываем игршку...");
+                    prize = shop.playAToy();
+                    prizeList.addPrize(prize);
+                    System.out.printf("Приз: %s\n", prize);
                     break;
 
                 case 6:
