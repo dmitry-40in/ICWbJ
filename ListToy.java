@@ -59,13 +59,4 @@ public class ListToy {
         }
         return null;
     }
-
-    public void writePrizeToyToFile(Toy toy, String filename) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true));
-        writer.write(toy.getId() + "," + toy.getName() + "\n");
-        writer.close();
-    }
-
-    
-
 }

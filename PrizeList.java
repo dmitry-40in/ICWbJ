@@ -15,7 +15,11 @@ public class PrizeList {
         for (String prize : prizeList) {
             System.out.println(prize);
         }
-    }    
+    }
 
-
+    public String givePrize() {
+        String prizeToGive = prizeList.get(0);
+        prizeList.remove(0);
+        return prizeToGive;
+    }
 }

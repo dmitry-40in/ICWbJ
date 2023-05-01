@@ -4,13 +4,12 @@ public abstract class AbstractToy {
     private int quantity;
     private int frequency;
 
-    public AbstractToy (int id, String name, int quantity, int frequency) {
+    public AbstractToy(int id, String name, int quantity, int frequency) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
         this.frequency = frequency;
     }
-
 
     public int getId() {
         return id;
@@ -33,7 +32,8 @@ public abstract class AbstractToy {
     }
 
     public void printInfo() {
-        System.out.printf("Игрушка \"%s\": ID %d, кол-во %d шт., частота выпадения %d%%\n", name, id, quantity, frequency);
+        System.out.printf("Игрушка \"%s\": ID %d, кол-во %d шт., частота выпадения %d%%\n", name, id, quantity,
+                frequency);
     }
 
     public String printInfoForPrize() {
@@ -41,5 +41,4 @@ public abstract class AbstractToy {
         return prize;
     }
 
-    
 }

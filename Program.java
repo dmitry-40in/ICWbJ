@@ -1,11 +1,11 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
-/**
- * Program
- */
 public class Program {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner console = new Scanner(System.in);
         boolean inShop = true;
         int id;
@@ -80,30 +80,32 @@ public class Program {
                     System.out.printf("Новая частота равна: ");
                     frequency = console.nextInt();
                     shop.changeFrequency(id, frequency);
-                    System.out.println("Частота выпадания игрушки изменена");
+                    System.out.println("Частота выпадания игрушки изменена.");
                     break;
-                
+
                 case 4:
                     System.out.println("Разыгрываем игршку...");
                     prize = shop.playAToy();
                     prizeList.addPrize(prize);
                     System.out.printf("Приз: %s\n", prize);
                     break;
-                
+
                 case 5:
                     System.out.println("Список призов:");
                     prizeList.showAllPrizes();
                     break;
 
                 case 6:
-                    
-                    // System.out.printf("Призовая игрушка: \"%s:%s\"выдана.", prizeList[0]);
+                    BufferedWriter writer = new BufferedWriter(new FileWriter("prizes_awarded.txt"));
+                    writer.write(prizeList.givePrize());
+                    writer.close();
+                    System.out.println("Призовая игрушка выдана.");
                     break;
-                    
+
                 case 7:
                     inShop = false;
                     break;
-            
+
                 default:
                     System.out.println();
                     System.out.println("Неверное значение, повторите выбор!");
